@@ -15,6 +15,6 @@ public class FollowCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, headCam.position, Vector3.Magnitude(transform.position - headCam.position)*Time.deltaTime*5f);
+        transform.position = Vector3.Lerp(transform.position, headCam.position-Vector3.up*1.2f, Vector3.Magnitude(transform.position - headCam.position)*Time.deltaTime*5f);
     }
 }
