@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    public static int idx = 0;
+
     public string levelToLoad = "SampleScene" ;
     public Button connectBtn;
     public InputField indxPlayer;
@@ -34,6 +36,10 @@ public class StartGame : MonoBehaviour
     {
         Debug.Log("start");
         Debug.Log(indxPlayer.text);
+
+        int v = int.Parse(indxPlayer.text);
+        StartGame.idx = v;
+
         SceneManager.LoadScene(levelToLoad);
         
     }

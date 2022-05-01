@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int idx;
+    public int idx = 1;
     public bool isPlayer = true;
-    public Transform spawnLocation;
+    //public Transform spawnLocation;
 
     public GameObject head;
     public GameObject body;
@@ -14,9 +14,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject arSesOrig;
 
 
-    void Start()
+    void OnAwake()
     {
-
+        isPlayer = (idx == StartGame.idx);
         if (!isPlayer)
         {
             head.transform.SetParent(this.transform);
@@ -24,6 +24,15 @@ public class PlayerManager : MonoBehaviour
             Destroy(arSesOrig);
             Destroy(arSes);
         }
+        else
+        {
+            arSesOrig.SetActive(true);
+            arSes.SetActive(true);
+            head.transform.SetParent(arSesOrig.transform);
+            body.transform.SetParent(arSes.transform);
+        }
+
+        Debug.Log(StartGame.idx);
     }
 
     // Update is called once per frame
